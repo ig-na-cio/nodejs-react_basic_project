@@ -13,4 +13,11 @@ node server.js
 
 ### Probar en el navegador
 
-http://localhost:3000/api/saludo
+http://localhost:5000/api/saludo
+
+
+### Problema de CORS
+
+Sale error porque corren en puertos separados, es por seguridad.
+
+npm install cors

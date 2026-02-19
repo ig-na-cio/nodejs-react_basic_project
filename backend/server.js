@@ -1,12 +1,15 @@
 // Importamos express
 // Podemos encontrar require o import para importar modulos
 const express = require("express");
+const cors = require("cors");
 
 // Creamos la app
 const app = express();
 
 // Definimos puerto
-const PORT = 3000;
+const PORT = 5000;
+
+app.use(cors());
 
 // Creamos un endpoint GET
 // Arrow function:
