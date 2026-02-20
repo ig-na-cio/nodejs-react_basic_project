@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-  const [mensaje, setMensaje] = useState("");
-
-  // Use effect se ejecuta una vez al montar el componente
-  useEffect(() => {
-    fetch("http://localhost:5000/api/saludo")
-      .then(res => res.json())
-      .then(data => setMensaje(data.mensaje));
-  }, []);
-
   return (
-    <div>
-      <h1>Mensaje del backend:</h1>
-      <p>{mensaje}</p>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/login">Login</Link> |{" "}
+        <Link to="/register">Register</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
