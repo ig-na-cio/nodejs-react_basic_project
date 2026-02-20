@@ -21,3 +21,8 @@ http://localhost:5000/api/saludo
 Sale error porque corren en puertos separados, es por seguridad.
 
 npm install cors
+
+
+npm install express mongoose cors bcrypt
+
+npm install dotenv

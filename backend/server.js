@@ -1,26 +1,21 @@
-// Importamos express
-// Podemos encontrar require o import para importar modulos
+// Server, arranque, main
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/auth.routes");
 
-// Creamos la app
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Definimos puerto
-const PORT = 5000;
+connectDB();
 
 app.use(cors());
+app.use(express.json());
 
-// Creamos un endpoint GET
-// Arrow function:
-// (req, res) => { }
-// Es lo mismo que:
-// function(req, res) { }
-app.get("/api/saludo", (req, res) => {
-    res.json({ mensaje: "Hola desde el backend" });
-});
+app.use("/api/auth", authRoutes);
 
-// Levantamos servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
