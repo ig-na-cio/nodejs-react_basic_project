@@ -12,8 +12,8 @@ function Login() {
     const data = await login(email, password);
 
     if (data.id) {
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("userEmail", data.email);
+      sessionStorage.setItem("userId", data.id);
+      sessionStorage.setItem("userEmail", data.email);
       navigate("/messages");
     } else {
       alert("Error login");

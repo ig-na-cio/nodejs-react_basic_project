@@ -7,15 +7,19 @@ export async function getMessages(userId) {
 }
 
 
-export async function sendMessage(userId, title, text) {
-  const sender = userId;
-  const recipient = userId;
+export async function sendMessage(userId, title, text, recipient) {
+  
+  const senderId = sessionStorage.getItem("userId");
+  // if (senderId !== userId) {
+  //   throw new Error("User ID mismatch. Please log in again.");
+  // }
+  const sender = sessionStorage.getItem("userEmail");
   const res = await fetch(`${API_URL}/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ title, text, senderId: sender, recipientId: recipient }),
+    body: JSON.stringify({ title, text, senderEmail: sender, recipientEmail: recipient }),
   });
   console.log("From endpoint");
   console.log(res);

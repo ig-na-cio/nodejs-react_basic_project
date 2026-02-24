@@ -19,6 +19,7 @@ function MessageList({ userId }) {
       {messages.map(msg => (
         <div key={msg._id}>
           <strong>{msg.title}</strong>
+          <p>From: {msg.sender}</p>
           <p>{msg.text}</p>
         </div>
       ))}

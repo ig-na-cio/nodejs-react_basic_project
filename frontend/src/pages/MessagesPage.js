@@ -2,8 +2,8 @@ import MessageList from "../components/MessageList";
 import MessageTyper from "../components/MessageTyper";
 
 function MessagesPage() {
-  const userId = localStorage.getItem("userId");
-  const userEmail = localStorage.getItem("userEmail");
+  const userId = sessionStorage.getItem("userId");
+  const userEmail = sessionStorage.getItem("userEmail");
   return (
     <div>
       <h1>Email: {userEmail}</h1>
