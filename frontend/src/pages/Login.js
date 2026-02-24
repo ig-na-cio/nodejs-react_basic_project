@@ -13,6 +13,7 @@ function Login() {
 
     if (data.id) {
       localStorage.setItem("userId", data.id);
+      localStorage.setItem("userEmail", data.email);
       navigate("/messages");
     } else {
       alert("Error login");
@@ -22,9 +23,24 @@ function Login() {
   return (
     <div>
       <h2>Login</h2>
+
       <form onSubmit={handleSubmit}>
-        <input value={email} onChange={e => setEmail(e.target.value)} />
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <input
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <br />
+
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <br />
+
         <button type="submit">Login</button>
       </form>
     </div>

@@ -15,6 +15,7 @@ function Register() {
     if (data.id) {
       // Guardamos el userId
       localStorage.setItem("userId", data.id);
+      localStorage.setItem("userEmail", data.email);
 
       // Redirigimos a la página de mensajes
       navigate("/messages");
