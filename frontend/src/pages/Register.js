@@ -5,10 +5,16 @@ import { useNavigate } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmed, setPasswordConfirmed] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (password !== passwordConfirmed) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
 
     const data = await register(email, password);
 
@@ -42,6 +48,14 @@ function Register() {
           placeholder="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
+        />
+        <br />
+
+        <input
+          type="password"
+          placeholder="Confirm password"
+          value={passwordConfirmed}
+          onChange={e => setPasswordConfirmed(e.target.value)}
         />
         <br />
 

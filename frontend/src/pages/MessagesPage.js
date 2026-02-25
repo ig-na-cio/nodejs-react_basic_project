@@ -1,5 +1,6 @@
 import MessageList from "../components/MessageList";
 import MessageTyper from "../components/MessageTyper";
+import "./MessagePage.css";
 
 function MessagesPage() {
   const userId = sessionStorage.getItem("userId");
@@ -7,13 +8,20 @@ function MessagesPage() {
   return (
     <div>
       <h1>Email: {userEmail}</h1>
-      <h2>Mis mensajes</h2>
+      {/* <h2>Mis mensajes</h2> */}
 
-      <button>Bien</button>
+      {/* <button>Bien</button> */}
+      <div className="page-container">
+        <div className="message-list-container">
+          <MessageList userId={userId} />
+        </div>
 
-      <MessageList userId={userId} />
+        <div className="message-typer-container">
+          <MessageTyper userId={userId} />
+        </div>
+      </div>
 
-      <MessageTyper userId={userId} />
+      
     </div>
   );
 }
