@@ -8,9 +8,6 @@ function MessagesPage() {
   return (
     <div>
       <h1>Email: {userEmail}</h1>
-      {/* <h2>Mis mensajes</h2> */}
-
-      {/* <button>Bien</button> */}
       <div className="page-container">
         <div className="message-list-container">
           <MessageList userId={userId} />

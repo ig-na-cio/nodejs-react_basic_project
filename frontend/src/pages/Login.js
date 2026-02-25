@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import "./LoginRegister.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -21,9 +22,14 @@ function Login() {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-
+    <div className="main-container">
+      <div className="main-center">
+        
+        <div className="main-text">
+        <h2>Login</h2>
+        </div>
+        
+      
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -41,8 +47,9 @@ function Login() {
         />
         <br />
 
-        <button type="submit">Login</button>
+        <button type="submit" className="main-button login-button-in-login">Login</button>
       </form>
+      </div>
     </div>
   );
 }

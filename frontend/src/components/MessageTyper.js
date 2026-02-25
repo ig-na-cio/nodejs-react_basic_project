@@ -25,7 +25,6 @@ function MessageTyper({ userId }) {
         <button type="submit">Send</button>
         <input value={title} placeholder="title" onChange={e => setTitle(e.target.value)} />
         <input value={recipientEmail} placeholder="Send To:" onChange={e => setRecipientEmail(e.target.value)} />
-        {/* <input value={text} placeholder="text" onChange={e => setText(e.target.value)} style={{width: "200px", height: "300px"}} /> */}
         <textarea
           value={text}
           placeholder="text"

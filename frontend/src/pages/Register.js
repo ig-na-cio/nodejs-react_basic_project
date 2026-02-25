@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { register } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import "./LoginRegister.css";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -19,11 +20,9 @@ function Register() {
     const data = await register(email, password);
 
     if (data.id) {
-      // Guardamos el userId
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("userEmail", data.email);
 
-      // Redirigimos a la página de mensajes
       navigate("/messages");
     } else {
       alert(data.message || "Error en registro");
@@ -31,9 +30,13 @@ function Register() {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
-
+    <div className="main-container">
+      <div className="main-center">
+        
+        <div className="main-text">
+          <h2>Register</h2>
+        </div>
+      
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -59,8 +62,9 @@ function Register() {
         />
         <br />
 
-        <button type="submit">Crear usuario</button>
+        <button className="main-button register-button-in-register" type="submit">Register</button>
       </form>
+      </div>
     </div>
   );
 }

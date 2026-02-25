@@ -14,14 +14,14 @@ function MessageList({ userId }) {
       
       console.log("Eliminar mensaje con ID:", messageId);
       await deleteMessage(messageId, userId);
-      // Después de eliminar, refrescar la lista de mensajes
+
       await fetchData();
     }
 
   useEffect(() => {
-    
 
     fetchData();
+  
   }, [userId]);
 
   return (
@@ -36,7 +36,6 @@ function MessageList({ userId }) {
           ? "Sent from me"
           : "From " + msg.sender})
           <br />
-          {/* <p>From: {msg.sender}</p> */}
           <p>{msg.text}</p>
           <button onClick={() => handleDeleteMessage(msg._id)}>Delete</button>
         </div>

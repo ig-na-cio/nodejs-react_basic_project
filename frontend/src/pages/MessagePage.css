@@ -1,6 +1,8 @@
+
+
 .page-container {
   display: flex;
-  height: 100vh; /* ocupa toda la pantalla */
+  height: 100vh;
 }
 
 .message-list-container {
