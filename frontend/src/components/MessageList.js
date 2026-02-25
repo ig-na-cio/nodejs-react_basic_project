@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMessages } from "../api/messages";
+import { getMessages, deleteMessage } from "../api/messages";
 
 function MessageList({ userId }) {
   const [messages, setMessages] = useState([]);
@@ -8,6 +8,14 @@ function MessageList({ userId }) {
     async function fetchData() {
       const data = await getMessages(userId);
       setMessages(data);
+    }
+
+    async function handleDeleteMessage(messageId) {
+      
+      console.log("Eliminar mensaje con ID:", messageId);
+      await deleteMessage(messageId, userId);
+      // Después de eliminar, refrescar la lista de mensajes
+      await fetchData();
     }
 
   useEffect(() => {
@@ -30,6 +38,7 @@ function MessageList({ userId }) {
           <br />
           {/* <p>From: {msg.sender}</p> */}
           <p>{msg.text}</p>
+          <button onClick={() => handleDeleteMessage(msg._id)}>Delete</button>
         </div>
       ))}
     </div>

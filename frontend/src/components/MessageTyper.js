@@ -11,7 +11,10 @@ function MessageTyper({ userId }) {
 
         const data = await sendMessage(userId, title, text, recipientEmail);
         console.log("Mensaje enviado");
-        console.log(data)
+        console.log(data);
+        setTitle("");
+        setText("");
+        setRecipientEmail("");
     }
 
   return (

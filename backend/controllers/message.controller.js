@@ -32,12 +32,13 @@ exports.sendMessage = async (req, res) => {
             return res.status(404).json({ message: "Recipient no encontrado" });
         }
         const recipientId = recipient._id;
-
-        // Agregar mensaje al recipient
-        await User.findByIdAndUpdate(recipientId, {
-            $push: { messages: message._id }
-        });
-
+        
+        if (!recipientId.equals(senderId)) {
+            // Agregar mensaje al recipient
+            await User.findByIdAndUpdate(recipientId, {
+                $push: { messages: message._id }
+            });
+        }
         res.status(201).json(message);
 
     } catch (error) {
@@ -56,5 +57,27 @@ exports.getUserMessages = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({ message: "Error obteniendo mensajes" });
+    }
+};
+
+exports.deleteMessage = async (req, res) => {
+    try {
+        const { messageId, userId } = req.params;
+
+        // Eliminar referencia del mensaje en el usuario
+        await User.findByIdAndUpdate(userId, {
+            $pull: { messages: messageId }
+        });
+
+        // Si es el ultimo usuario con el mensaje, eliminar el mensaje
+        const usersWithMessage = await User.find({ messages: messageId });
+        if (usersWithMessage.length === 0) {
+            await Message.findByIdAndDelete(messageId);
+        }
+
+        res.json({ message: "Mensaje eliminado" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Error eliminando mensaje" });
     }
 };

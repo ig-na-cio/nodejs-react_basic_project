@@ -25,3 +25,11 @@ export async function sendMessage(userId, title, text, recipient) {
   console.log(res);
   return res.json();
 }
+
+export async function deleteMessage(messageId, userId) {
+  const res = await fetch(`${API_URL}/${messageId}/${userId}`, {
+    method: "DELETE",
+  });
+  console.log("Delete response:", res);
+  return res.json();
+}
